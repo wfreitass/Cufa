@@ -11,7 +11,7 @@
     <link rel="stylesheet" href=" {{asset('views/login/css/owl.carousel.min.css')}}">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{asset('views/login/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <!-- Style -->
     <link rel="stylesheet" href="{{asset('views/login/css/style.css')}}">
@@ -26,7 +26,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <img src="images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid">
+          <img src=" {{asset('storage/images/login/undraw_remotely_2j6y.svg')}}" alt="Image" class="img-fluid">
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">

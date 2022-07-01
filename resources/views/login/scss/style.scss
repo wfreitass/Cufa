@@ -1,8 +1,9 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 
-@import "bootstrap/functions";
-@import "bootstrap/variables";
-@import "bootstrap/mixins";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
 $font-family-sans-serif-2: 'Roboto', sans-serif;
 $font-family-serif: 'Source Serif Pro', serif;
@@ -61,7 +62,7 @@ h2 {
 				transform: translateY(-50%);
 				transition: .3s all ease;
 			}
-			
+
 			input {
 				background: transparent;
 			}
@@ -123,9 +124,9 @@ h2 {
 
 .social-login {
 	a {
-		
+
 		text-decoration: none;
-		
+
 		position: relative;
 		text-align: center;
 		color: $white;

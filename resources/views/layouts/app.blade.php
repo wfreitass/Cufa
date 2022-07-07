@@ -35,7 +35,7 @@
         <aside class="sidebar">
             <div class="sidebar-start">
                 <div class="sidebar-head">
-                    <a href="/" class="logo-wrapper" title="Home">
+                    <a href="{{route('home')}}" class="logo-wrapper" title="Home">
                         <span class="sr-only">Home</span>
                         <span class="icon logo" aria-hidden="true"></span>
                         <div class="logo-text">
@@ -52,7 +52,7 @@
                 <div class="sidebar-body">
                     <ul class="sidebar-body-menu">
                         <li>
-                            <a class="active" href="/"><span class="icon home"
+                            <a class="active" href="{{route('home')}}"><span class="icon home"
                                     aria-hidden="true"></span>Dashboard</a>
                         </li>
                         <li>
@@ -152,7 +152,7 @@
                         </li>
                         <li>
                             <a class="show-cat-btn" href="##">
-                                <span class="icon user-3" aria-hidden="true"></span>Users
+                                <span class="icon user-3" aria-hidden="true"></span><span>Usuários</span>
                                 <span class="category__btn transparent-btn" title="Open list">
                                     <span class="sr-only">Open list</span>
                                     <span class="icon arrow-down" aria-hidden="true"></span>
@@ -160,10 +160,10 @@
                             </a>
                             <ul class="cat-sub-menu">
                                 <li>
-                                    <a href="users-01.html">Users-01</a>
+                                    <a href="{{route('users')}}">Todos</a>
                                 </li>
                                 <li>
-                                    <a href="users-02.html">Users-02</a>
+                                    <a href="users-02.html">Criar Usuário</a>
                                 </li>
                             </ul>
                         </li>

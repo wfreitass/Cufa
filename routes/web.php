@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,10 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
+
+Route::controller(UserController::class)->group(function(){
+    Route::get('/users', 'index')->name('users');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/teste', [App\Http\Controllers\HomeController::class, 'teste'])->name('teste');

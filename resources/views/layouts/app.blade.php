@@ -193,10 +193,10 @@
             <nav class="main-nav--bg">
                 <div class="container main-nav">
                     <div class="main-nav-start">
-                        <div class="search-wrapper">
+                        {{-- <div class="search-wrapper">
                             <i data-feather="search" aria-hidden="true"></i>
                             <input type="text" placeholder="Enter keywords ..." required>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="main-nav-end">
                         <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
@@ -269,9 +269,9 @@
                             </ul>
                         </div> --}}
                         <div class="nav-user-wrapper">
-                            <button href="##" class="nav-user-btn dropdown-btn" title="My profile"
-                                type="button">
-                                <span class="sr-only">My profile</span>
+                            <button href="##" class="nav-user-btn dropdown-btn"
+                                title="{{ Auth::user()->name }}" type="button">
+                                <span class="sr-only">{{ Auth::user()->name }}</span>
                                 <span class="nav-user-img">
                                     <picture>
                                         <source
@@ -283,17 +283,24 @@
                                 </span>
                             </button>
                             <ul class="users-item-dropdown nav-user-dropdown dropdown">
+                                <li><a href=""><span>{{ Auth::user()->name }}</span></a></li>
                                 <li><a href="##">
                                         <i data-feather="user" aria-hidden="true"></i>
-                                        <span>Profile</span>
+                                        <span>Perfil</span>
                                     </a></li>
-                                <li><a href="##">
+                                {{-- <li><a href="##">
                                         <i data-feather="settings" aria-hidden="true"></i>
                                         <span>Account settings</span>
-                                    </a></li>
-                                <li><a class="danger" href="##">
+                                    </a></li> --}}
+                                <li><a class="danger" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+									document.getElementById('logout-form').submit();">
                                         <i data-feather="log-out" aria-hidden="true"></i>
-                                        <span>Log out</span>
+                                        <span>Sair</span>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
                                     </a></li>
                             </ul>
                         </div>
@@ -303,7 +310,7 @@
             <!-- ! Main -->
             <main class="main users chart-page" id="skip-target">
                 <div class="container">
-                    <h2 class="main-title">Dashboard</h2>
+                    {{-- <h2 class="main-title">Dashboard</h2>
                     <div class="row stat-cards">
                         <div class="col-md-6 col-xl-3">
                             <article class="stat-cards-item">
@@ -373,7 +380,8 @@
                                 </div>
                             </article>
                         </div>
-                    </div>
+                    </div> --}}
+					@yield('content')
 
                 </div>
             </main>

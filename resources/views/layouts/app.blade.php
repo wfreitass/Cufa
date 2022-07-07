@@ -173,7 +173,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="sidebar-footer">
+            {{-- <div class="sidebar-footer">
                 <a href="##" class="sidebar-user">
                     <span class="sidebar-user-img">
                         <picture>
@@ -186,7 +186,7 @@
                         <span class="sidebar-user__subtitle">Support manager</span>
                     </div>
                 </a>
-            </div>
+            </div> --}}
         </aside>
         <div class="main-wrapper">
             <!-- ! Main nav -->

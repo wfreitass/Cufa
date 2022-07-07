@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 
 Route::controller(UserController::class)->group(function(){
-    Route::get('/users', 'index')->name('users');
+    Route::get('/admin/users', 'index')->name('users');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

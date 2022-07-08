@@ -1,5 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/darkModeBootstrap.js": "/js/darkModeBootstrap.js",
     "/js/layout/script.js": "/js/layout/script.js",
     "/js/layout/chart.min.js": "/js/layout/chart.min.js",
     "/css/app.css": "/css/app.css",

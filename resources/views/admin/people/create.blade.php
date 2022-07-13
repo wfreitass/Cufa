@@ -8,6 +8,7 @@
         <div class="row">
             <div class="d-flex justify-content-center">
                 <form action="" method="post" class="w-75">
+					<input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="row">
                         <div class="col-12">
                             <label for="nome" class="form-label">Nome Completo</label>

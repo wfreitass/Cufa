@@ -57,6 +57,24 @@
                         </li>
                         <li>
                             <a class="show-cat-btn" href="##">
+                                <span class="icon" aria-hidden="true"><i data-feather="user"></i></span><span>Pessoas</span>
+                                <span class="category__btn transparent-btn" title="Open list">
+                                    <span class="sr-only">Open list</span>
+                                    <span class="icon arrow-down" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                            <ul class="cat-sub-menu">
+                                <li>
+                                    <a href="{{route('peoples')}}">Todas</a>
+                                </li>
+                                <li>
+                                    <a href="{{route('createpeople')}}">Adicionar</a>
+                                </li>
+                            </ul>
+                        </li>
+						{{-- Post --}}
+                        {{-- <li>
+                            <a class="show-cat-btn" href="##">
                                 <span class="icon document" aria-hidden="true"></span>Posts
                                 <span class="category__btn transparent-btn" title="Open list">
                                     <span class="sr-only">Open list</span>
@@ -71,7 +89,8 @@
                                     <a href="new-post.html">Add new post</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> --}}
+
                         <li>
                             <a class="show-cat-btn" href="##">
                                 <span class="icon folder" aria-hidden="true"></span>Categories
@@ -201,6 +220,7 @@
                     <div class="main-nav-end">
                         <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
                             <span class="sr-only">Toggle menu</span>
+
                             <span class="icon menu-toggle--gray" aria-hidden="true"></span>
                         </button>
                         {{-- <div class="lang-switcher-wrapper">
@@ -309,7 +329,7 @@
             </nav>
             <!-- ! Main -->
             <main class="main users chart-page" id="skip-target">
-                <div class="container">
+                <div class="container ">
                     {{-- <h2 class="main-title">Dashboard</h2>
                     <div class="row stat-cards">
                         <div class="col-md-6 col-xl-3">
@@ -381,8 +401,10 @@
                             </article>
                         </div>
                     </div> --}}
-					@yield('content')
+					<div class="row">
+						@yield('content')
 
+					</div>
                 </div>
             </main>
             <!-- ! Footer -->

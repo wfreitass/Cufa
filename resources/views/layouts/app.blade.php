@@ -403,7 +403,6 @@
                     </div> --}}
 					<div class="row">
 						@yield('content')
-
 					</div>
                 </div>
             </main>
@@ -436,28 +435,28 @@
 
 	{{-- <script src="{{ asset('js/darkModeBootstrap.js') }}" defer></script> --}}
 	<script>
-		var themeDark = localStorage.getItem('darkMode');
+		// var themeDark = localStorage.getItem('darkMode');
 
-		var darkThemeToggle = document.querySelector('.theme-switcher');
+		// var darkThemeToggle = document.querySelector('.theme-switcher');
 
-		darkThemeToggle.addEventListener("click", function(){
-			let tables = window.document.getElementsByTagName("table") ;
+		// darkThemeToggle.addEventListener("click", function(){
+		// 	let tables = window.document.getElementsByTagName("table") ;
 
-			if(tables.length && themeDark === 'enabled'){
-				for(let tb in tables){
-					console.log(tables[tb]);
-					tables[tb].classList.remove('table-primary');
-					tables[tb].classList.add('table-dark');
-				}
-			}else{
-				for(let tb in tables){
-					console.log(tables[tb]);
-					tables[tb].classList.remove('table-dark');
-					tables[tb].classList.add('table-primary');
-				}
-			}
+		// 	if(tables.length && themeDark === 'enabled'){
+		// 		for(let tb in tables){
+		// 			console.log(tables[tb]);
+		// 			tables[tb].classList.remove('table-primary');
+		// 			tables[tb].classList.add('table-dark');
+		// 		}
+		// 	}else{
+		// 		for(let tb in tables){
+		// 			console.log(tables[tb]);
+		// 			tables[tb].classList.remove('table-dark');
+		// 			tables[tb].classList.add('table-primary');
+		// 		}
+		// 	}
 
-		});
+		// });
 
 	</script>
 </body>

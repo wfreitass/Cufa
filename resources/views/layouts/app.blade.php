@@ -402,6 +402,7 @@
                         </div>
                     </div> --}}
 					<div class="row">
+						@include('flash::message')
 						@yield('content')
 					</div>
                 </div>

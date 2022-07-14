@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PeopleRequest;
 use App\Models\People;
 use Exception;
 use Illuminate\Http\Request;
+use Laracasts\Flash;
+use Laracasts\Flash\Flash as FlashFlash;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class PeopleController extends Controller
 {
@@ -34,30 +38,8 @@ class PeopleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PeopleRequest $request)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'min:8', 'string'],
-            'cpf' => ['required', 'min:11', 'max:11', 'string'],
-            'phone' => ['required', 'min:8' ,'max:11', 'string'],
-            'address' => ['required', 'string'],
-            'complement' => ['string']
-        ], [
-            'name.required' => 'Campo Obrigatório',
-            'name.min' => 'O campo preciso de no mínimo :min caracters',
-            'name.string' => 'O campo precisa ser uma frase',
-            'cpf.required' => 'Campo obrigatório',
-            'cpf.min' => 'O campo preciso de no mínimo :min caracters',
-            'cpf.max' => 'O campo preciso de no mínimo :max caracters',
-            'cpf.string' => 'O campo precisa ser uma frase',
-            'phone.required' => 'Campo obrigatório',
-            'phone.min' => 'O campo preciso de no mínimo :min caracters',
-            'phone.max' => 'O campo preciso de no mínimo :max caracters',
-            'phone.string' => 'O campo precisa ser uma frase',
-            'address.required' => 'Campo Obrigatório',
-            'address.string' => 'O campo precisa ser uma frase',
-            'complement.string' => 'O campo precisa ser uma frase'
-        ]);
         if($request->isMethod('post')){
             try{
                 $data = $request->all();
@@ -65,8 +47,8 @@ class PeopleController extends Controller
             }catch(Exception $e){   
                 return $e->getMessage();
             }
-            // dd($data);
         }
+        flash('Pessoa adicionada com sucesso', 'success');
         return view('admin.home',$data);
     }
 

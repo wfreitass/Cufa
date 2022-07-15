@@ -110,4 +110,18 @@ class PeopleController extends Controller
     {
         //
     }
+
+    /**
+     * Search the specified resource from storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $cpf
+     * @return \Illuminate\Http\Response
+     */
+    public function search(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            dd($data);
+        }
+    }
 }

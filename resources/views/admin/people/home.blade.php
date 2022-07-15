@@ -65,21 +65,28 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{{route('searchpeople')}}" method="POST" id="formSearch">
+						@csrf
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">CPF</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="recipient-name" name="cpf">
                         </div>
-
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-                    <button type="button" class="btn btn-primary">Pesquisar</button>
+                    <button type="button" class="btn btn-primary" id="submitSearch">Pesquisar</button>
                 </div>
             </div>
         </div>
     </div>
-
-
 @endsection
+
+
+<script>
+	let buttonSubmit = window.document.getElementById('submitSearch');
+	let formSearch = window.document.getElementById('formSearch');
+	buttonSubmit.addEventListener("click",function(){
+		formSearch.submit();
+	})
+</script>

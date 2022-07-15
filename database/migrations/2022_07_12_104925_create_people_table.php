@@ -20,7 +20,7 @@ class CreatePeopleTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone');
             $table->string('address');
-            $table->string('complement');
+            $table->string('complement')->nullable();
             $table->timestamps();
         });
     }

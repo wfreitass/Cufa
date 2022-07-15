@@ -6,6 +6,7 @@ use App\Http\Requests\PeopleRequest;
 use App\Models\People;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Laracasts\Flash;
 use Laracasts\Flash\Flash as FlashFlash;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
@@ -19,7 +20,13 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        return view('admin.people.home');
+        if(People::all()->count() > 0){
+            $data = People::paginate(15);
+            return view('admin.people.home', ['data' => $data]);
+        }else{
+            flash('Nenhum dado encontrado', 'warning');
+            return view('admin.people.home');
+        }
     }
 
     /**
@@ -43,13 +50,20 @@ class PeopleController extends Controller
         if($request->isMethod('post')){
             try{
                 $data = $request->all();
+                if(People::where('cpf',$data['cpf'])->first()){
+                    flash('CPF já cadastrado na base de dados', 'warning');
+                    return view('admin.people.create');
+                }
                 People::create($data);
+                flash('Pessoa adicionada com sucesso', 'success');
+                return view('admin.people.create', $data);
             }catch(Exception $e){   
-                return $e->getMessage();
+                $error = $e->getMessage();
+                flash('Error ao Adicionar uma nova pessoa, entre em contato com o desenvolvedor', 'error');
+                return view('admin.people.create', $error);
             }
         }
-        flash('Pessoa adicionada com sucesso', 'success');
-        return view('admin.home',$data);
+        return view('admin.home');
     }
 
     /**

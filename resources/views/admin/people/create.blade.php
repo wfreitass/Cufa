@@ -7,6 +7,7 @@
     <div class="container">
         <div class="row">
             <div class="d-flex justify-content-center">
+
                 <form action="{{route('salvepeople')}}" method="post" class="w-75 ">
 					<input type="hidden" name="_token" value="{{csrf_token()}}">
                     <div class="row">
@@ -65,9 +66,11 @@
                                 aria-label="complemento">
                         </div>
                     </div>
-                    <div class="mt-3 d-flex justify-content-end">
-                        <button class="btn btn-primary ">Cadastrar</button>
+
+                    <div class="mt-3 d-flex justify-content-end mb-3">
+                        <button class="btn btn-primary">Cadastrar</button>
                     </div>
+					@include('flash::message')
                 </form>
             </div>
         </div>

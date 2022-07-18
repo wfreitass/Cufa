@@ -13,6 +13,13 @@ use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 
 class PeopleController extends Controller
 {
+    private $people;
+
+    public function __construct(People $people)
+    {
+        $this->people = $people;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +43,7 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        return view('admin.people.create');
+        return view('admin.people.form');
     }
 
     /**
@@ -52,15 +59,15 @@ class PeopleController extends Controller
                 $data = $request->all();
                 if(People::where('cpf',$data['cpf'])->first()){
                     flash('CPF já cadastrado na base de dados', 'warning');
-                    return view('admin.people.create');
+                    return view('admin.people.form');
                 }
                 People::create($data);
                 flash('Pessoa adicionada com sucesso', 'success');
-                return view('admin.people.create', $data);
+                return view('admin.people.form', $data);
             }catch(Exception $e){   
                 $error = $e->getMessage();
                 flash('Error ao Adicionar uma nova pessoa, entre em contato com o desenvolvedor', 'error');
-                return view('admin.people.create', $error);
+                return view('admin.people.form', $error);
             }
         }
         return view('admin.home');
@@ -85,7 +92,9 @@ class PeopleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = $this->people->find($id);
+        // $data = People::where('id', $id)->get();
+        return view('admin.people.form', ['data' => $data]);
     }
 
     /**
@@ -97,7 +106,13 @@ class PeopleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if($request->isMethod('put')){
+            $people = $this->people->find($id);
+            $people->update($request->all());
+            flash("Atualizado com sucesso","success");
+            return view('admin.people.form',['data'=>$people]);
+        }
+        return view('admin.home');
     }
 
     /**

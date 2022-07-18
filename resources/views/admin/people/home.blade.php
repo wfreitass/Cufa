@@ -40,7 +40,7 @@
                                     <td>{{ $d->phone }}</td>
                                     <td>{{ $d->cpf }}</td>
                                     <td >
-										<button type="button" class="btn btn-warning mr-1">Editar</button>
+										<a href="{{route('editpeople',['id'=>$d->id])}}" type="button" class="btn btn-warning mr-1">Editar</a>
                                         <button type="button" class="btn btn-danger">Excluir</button>
                                     </td>
                                 </tr>

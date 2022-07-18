@@ -120,8 +120,9 @@ class PeopleController extends Controller
      */
     public function search(Request $request){
         if($request->isMethod('post')){
-            $data = $request->all();
-            dd($data);
+            // $data =  People::where('cpf', $request->all('cpf'))->get();
+            $data = DB::table('people')->where('cpf',$request->all('cpf'))->paginate(1);
+            return view('admin.people.home', ['data' => $data]);
         }
     }
 }

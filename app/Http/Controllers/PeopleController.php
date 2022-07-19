@@ -26,7 +26,7 @@ class PeopleController extends Controller
     public function index()
     {
         if (People::all()->count() > 0) {
-            $data = People::paginate(15);
+            $data = People::orderBy('name')->paginate(15);
             return view('admin.people.home', ['data' => $data]);
         } else {
             flash('Nenhum dado encontrado', 'warning');

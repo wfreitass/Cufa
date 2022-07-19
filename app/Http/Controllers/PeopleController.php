@@ -6,10 +6,7 @@ use App\Http\Requests\PeopleRequest;
 use App\Models\People;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Laracasts\Flash;
-use Laracasts\Flash\Flash as FlashFlash;
-use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
+
 
 class PeopleController extends Controller
 {
@@ -17,6 +14,7 @@ class PeopleController extends Controller
 
     public function __construct(People $people)
     {
+        $this->middleware('auth');
         $this->people = $people;
     }
 
@@ -61,9 +59,9 @@ class PeopleController extends Controller
                     flash('CPF já cadastrado na base de dados', 'warning');
                     return view('admin.people.form');
                 }
-                People::create($data);
+                $data = People::create($data);
                 flash('Pessoa adicionada com sucesso', 'success');
-                return view('admin.people.form', $data);
+                return view('admin.people.form',['data'=>$data]);
             }catch(Exception $e){   
                 $error = $e->getMessage();
                 flash('Error ao Adicionar uma nova pessoa, entre em contato com o desenvolvedor', 'error');
@@ -107,10 +105,16 @@ class PeopleController extends Controller
     public function update(Request $request, $id)
     {
         if($request->isMethod('put')){
-            $people = $this->people->find($id);
-            $people->update($request->all());
-            flash("Atualizado com sucesso","success");
-            return view('admin.people.form',['data'=>$people]);
+            try{
+                $people = $this->people->find($id);
+                $people->update($request->all());
+                flash("Atualizado com sucesso","success");
+                return view('admin.people.form',['data'=>$people]);
+            }catch(Exception $e){
+                $error = $e->getMessage();
+                flash('Error ao Autualizar dados, entre em contato com o desenvolvedor', 'error');
+                return view('admin.people.form', $error);
+            }
         }
         return view('admin.home');
     }
@@ -135,9 +139,18 @@ class PeopleController extends Controller
      */
     public function search(Request $request){
         if($request->isMethod('post')){
-            // $data =  People::where('cpf', $request->all('cpf'))->get();
-            $data = DB::table('people')->where('cpf',$request->all('cpf'))->paginate(1);
-            return view('admin.people.home', ['data' => $data]);
+            try{
+                $data =  People::where('cpf', $request->all('cpf')['cpf'])->get();
+                if($data->count() == false){
+                    flash("Cpf Não encontrado na base de dados", "warning");
+                    return view('admin.people.home', ['data' => $data]);
+                }
+                return view('admin.people.home', ['data' => $data]);
+            }catch(Exception $e){
+                $error = $e->getMessage();
+                flash('Error ao Adicionar uma nova pessoa, entre em contato com o desenvolvedor', 'error');
+                return view('admin.people.form', $error);
+            }
         }
     }
 }

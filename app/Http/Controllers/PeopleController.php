@@ -25,10 +25,10 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        if(People::all()->count() > 0){
+        if (People::all()->count() > 0) {
             $data = People::paginate(15);
             return view('admin.people.home', ['data' => $data]);
-        }else{
+        } else {
             flash('Nenhum dado encontrado', 'warning');
             return view('admin.people.home');
         }
@@ -52,17 +52,17 @@ class PeopleController extends Controller
      */
     public function store(PeopleRequest $request)
     {
-        if($request->isMethod('post')){
-            try{
+        if ($request->isMethod('post')) {
+            try {
                 $data = $request->all();
-                if(People::where('cpf',$data['cpf'])->first()){
+                if (People::where('cpf', $data['cpf'])->first()) {
                     flash('CPF já cadastrado na base de dados', 'warning');
                     return view('admin.people.form');
                 }
                 $data = People::create($data);
                 flash('Pessoa adicionada com sucesso', 'success');
-                return view('admin.people.form',['data'=>$data]);
-            }catch(Exception $e){   
+                return view('admin.people.form', ['data' => $data]);
+            } catch (Exception $e) {
                 $error = $e->getMessage();
                 flash('Error ao Adicionar uma nova pessoa, entre em contato com o desenvolvedor', 'error');
                 return view('admin.people.form', $error);
@@ -104,13 +104,13 @@ class PeopleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if($request->isMethod('put')){
-            try{
+        if ($request->isMethod('put')) {
+            try {
                 $people = $this->people->find($id);
                 $people->update($request->all());
-                flash("Atualizado com sucesso","success");
-                return view('admin.people.form',['data'=>$people]);
-            }catch(Exception $e){
+                flash("Atualizado com sucesso", "success");
+                return view('admin.people.form', ['data' => $people]);
+            } catch (Exception $e) {
                 $error = $e->getMessage();
                 flash('Error ao Autualizar dados, entre em contato com o desenvolvedor', 'error');
                 return view('admin.people.form', $error);
@@ -127,26 +127,35 @@ class PeopleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            if (People::where('id', $id)->delete()) {
+                flash('Dados excluidos com sucesso', 'success');
+                return redirect(route('peoples'));
+            }
+        } catch (Exception $e) {
+            $error = $e->getMessage();
+            flash('Error ao excluir dados, entre em contato com o desenvolvedor', 'error');
+            return view('admin.people.home', $error);
+        }
     }
 
     /**
      * Search the specified resource from storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $cpf
      * @return \Illuminate\Http\Response
      */
-    public function search(Request $request){
-        if($request->isMethod('post')){
-            try{
+    public function search(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            try {
                 $data =  People::where('cpf', $request->all('cpf')['cpf'])->get();
-                if($data->count() == false){
+                if ($data->count() == false) {
                     flash("Cpf Não encontrado na base de dados", "warning");
                     return view('admin.people.home', ['data' => $data]);
                 }
                 return view('admin.people.home', ['data' => $data]);
-            }catch(Exception $e){
+            } catch (Exception $e) {
                 $error = $e->getMessage();
                 flash('Error ao Adicionar uma nova pessoa, entre em contato com o desenvolvedor', 'error');
                 return view('admin.people.form', $error);

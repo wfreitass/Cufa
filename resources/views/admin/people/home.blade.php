@@ -4,24 +4,30 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item "><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item  active" aria-current="page">Pessoas</li>
+                <li class="breadcrumb-item  active" aria-current="page"><a href="{{ route('peoples') }}">Pessoas</a></li>
             </ol>
         </nav>
     </div>
     <div class="d-flex justify-content-center">
         <h2 class="main-title">Todas as pessoas</h2>
     </div>
-    <div class="d-flex justify-content-end">
-        <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            data-bs-whatever="@mdo">Pesquisar</button>
-    </div>
+	<div class="container">
+		<div class="row">
+			<div class="d-flex justify-content-center">
+				@include('flash::message')
+			</div>
+			<div class="d-flex justify-content-end">
+				<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
+					data-bs-whatever="@mdo">Pesquisar</button>
+			</div>
+		</div>
+	</div>
     <div class="container">
         <div class="row">
             <div class="d-flex justify-content-center">
-                {{-- <div class="table-responsive"> --}}
                 @isset($data)
                     <table class="table table-primary table-striped table-hover table-bordered align-middle">
-                        <thead class="">
+                        <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nome</th>
@@ -39,25 +45,22 @@
                                     <td>{{ $d['email'] }}</td>
                                     <td>{{ $d['phone'] }}</td>
                                     <td>{{ $d['cpf'] }}</td>
-                                    <td>
+                                    <td class="d-flex justify-content-evenly">
                                         <a href="{{ route('editpeople', ['id' => $d['id']]) }}" type="button"
                                             class="btn btn-warning mr-1">Editar</a>
-                                        <button type="button" class="btn btn-danger">Excluir</button>
+
+											<form action="{{route('destroypeople', ['id' => $d['id']])}}" method="post">
+												@csrf
+												@method("DELETE")
+												<button type="submit" class="btn btn-danger">Excluir</button>
+											</form>
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 @endisset
-                {{-- </div> --}}
             </div>
-			<div class="container">
-				<div class="row">
-					<div class="d-flex justify-content-center">
-						@include('flash::message')
-					</div>
-				</div>
-			</div>
 
             @if ($data->count() > 1)
                 <div class="d-flex justify-content-end">{{ $data->links() }}</div>
@@ -78,7 +81,8 @@
                         @csrf
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">CPF</label>
-                            <input type="text" class="form-control" maxlength="11" id="recipient-name" name="cpf" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                            <input type="text" class="form-control" maxlength="11" id="recipient-name" name="cpf"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                         </div>
                     </form>
                 </div>

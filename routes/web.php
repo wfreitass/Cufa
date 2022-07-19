@@ -22,19 +22,19 @@ Route::get('/', function () {
 });
 
 
-Route::controller(UserController::class)->group(function(){
+Route::controller(UserController::class)->group(function () {
     Route::get('/admin/users', 'index')->name('users');
 });
 
-Route::controller(PeopleController::class)->group(function(){
+Route::controller(PeopleController::class)->group(function () {
     Route::get('/admin/people/peoples', 'index')->name('peoples');
     Route::get('/admin/people/createpeople', 'create')->name('createpeople');
     Route::post('/admin/people/salvepeople', 'store')->name('salvepeople');
     Route::post('/admin/people/searchpeople', 'search')->name('searchpeople');
     Route::get('/admin/people/editpeople/{id}', 'edit')->name('editpeople');
     Route::put('/admin/people/updatepeople/{id}', 'update')->name('updatepeople');
+    Route::delete('admin/people/destroypeople/{id}', 'destroy')->name('destroypeople');
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Auth::routes();
-

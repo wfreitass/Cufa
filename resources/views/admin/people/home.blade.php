@@ -61,10 +61,11 @@
                     </table>
                 @endisset
             </div>
-
-            @if ($data->count() > 1)
-                <div class="d-flex justify-content-end">{{ $data->links() }}</div>
-            @endif
+			@isset($data)
+            	@if ($data->count() > 1)
+					<div class="d-flex justify-content-end">{{ $data->links() }}</div>
+            	@endif
+			@endisset
         </div>
     </div>
 

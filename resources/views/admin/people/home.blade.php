@@ -11,17 +11,17 @@
     <div class="d-flex justify-content-center">
         <h2 class="main-title">Todas as pessoas</h2>
     </div>
-	<div class="container">
-		<div class="row">
-			<div class="d-flex justify-content-center">
-				@include('flash::message')
-			</div>
-			<div class="d-flex justify-content-end">
-				<button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
-					data-bs-whatever="@mdo">Pesquisar</button>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="d-flex justify-content-center">
+                @include('flash::message')
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    data-bs-whatever="@mdo">Pesquisar</button>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="d-flex justify-content-center">
@@ -37,7 +37,7 @@
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="">
                             @foreach ($data as $d)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
@@ -49,11 +49,12 @@
                                         <a href="{{ route('editpeople', ['id' => $d['id']]) }}" type="button"
                                             class="btn btn-warning mr-1">Editar</a>
 
-											<form action="{{route('destroypeople', ['id' => $d['id']])}}" method="post">
-												@csrf
-												@method("DELETE")
-												<button type="submit" class="btn btn-danger">Excluir</button>
-											</form>
+                                        <form action="{{ route('destroypeople', ['id' => $d['id']]) }}" method="post"
+                                            class="form-delete">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="button" class="btn btn-danger btn-delete">Excluir</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
@@ -61,11 +62,11 @@
                     </table>
                 @endisset
             </div>
-			@isset($data)
-            	@if ($data->count() > 1)
-					<div class="d-flex justify-content-end">{{ $data->links() }}</div>
-            	@endif
-			@endisset
+            @isset($data)
+                @if ($data->count() > 1)
+                    <div class="d-flex justify-content-end">{{ $data->links() }}</div>
+                @endif
+            @endisset
         </div>
     </div>
 
@@ -94,4 +95,34 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        let btnDelete = document.getElementsByClassName("btn-delete");
+        Object.keys(btnDelete).forEach((i) => {
+            // console.log(i + ' = ' + btnDelete[i])
+            btnDelete[i].addEventListener('click', (event) => {
+                Swal.fire({
+                    title: 'Cuidado !!!',
+                    text: "Deseja excluir esses dados",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Excluir',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+						Swal.fire(
+                            'Excluido',
+                            'Dados excluidos com sucesso',
+                            'success'
+                        )
+						setTimeout( ()=>{event.target.parentNode.submit()}, 1000);
+                    }
+                })
+            })
+        })
+    </script>
 @endsection

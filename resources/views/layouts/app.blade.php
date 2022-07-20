@@ -24,6 +24,7 @@
     <link rel="shortcut icon" href="{{ asset('images/Logo.svg') }} " type="image/x-icon">
     <!-- Custom styles -->
     <link rel="stylesheet" href="{{ asset('css/layout/style.css') }} ">
+	@yield('css')
 </head>
 
 <body>
@@ -432,6 +433,7 @@
     <!-- Custom scripts -->
     <script src="{{ asset('js/layout/script.js') }}"></script>
     {{-- <script src="js/script.js"></script> --}}
+	@yield('script')
 
 
 	{{-- <script src="{{ asset('js/darkModeBootstrap.js') }}" defer></script> --}}

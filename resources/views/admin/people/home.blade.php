@@ -48,13 +48,14 @@
                                     <td class="d-flex justify-content-evenly">
                                         <a href="{{ route('editpeople', ['id' => $d['id']]) }}" type="button"
                                             class="btn btn-warning mr-1">Editar</a>
-
-                                        <form action="{{ route('destroypeople', ['id' => $d['id']]) }}" method="post"
-                                            class="form-delete">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="button" class="btn btn-danger btn-delete">Excluir</button>
-                                        </form>
+										@can('destroy-people',Auth::user())
+											<form action="{{ route('destroypeople', ['id' => $d['id']]) }}" method="post"
+												class="form-delete">
+												@csrf
+												@method('DELETE')
+												<button type="button" class="btn btn-danger btn-delete">Excluir</button>
+											</form>
+										@endcan
                                     </td>
                                 </tr>
                             @endforeach
@@ -101,7 +102,6 @@
     <script>
         let btnDelete = document.getElementsByClassName("btn-delete");
         Object.keys(btnDelete).forEach((i) => {
-            // console.log(i + ' = ' + btnDelete[i])
             btnDelete[i].addEventListener('click', (event) => {
                 Swal.fire({
                     title: 'Cuidado !!!',
@@ -119,7 +119,7 @@
                             'Dados excluidos com sucesso',
                             'success'
                         )
-						setTimeout( ()=>{event.target.parentNode.submit()}, 1000);
+						setTimeout( ()=>{event.target.parentNode.submit()}, 2000);
                     }
                 })
             })

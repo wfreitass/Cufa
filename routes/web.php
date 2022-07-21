@@ -33,7 +33,7 @@ Route::controller(PeopleController::class)->group(function () {
     Route::post('/admin/people/searchpeople', 'search')->name('searchpeople');
     Route::get('/admin/people/editpeople/{id}', 'edit')->name('editpeople');
     Route::put('/admin/people/updatepeople/{id}', 'update')->name('updatepeople');
-    Route::delete('admin/people/destroypeople/{id}', 'destroy')->name('destroypeople');
+    Route::delete('admin/people/destroypeople/{id}', 'destroy')->name('destroypeople')->can('destroy-people', Auth::user());
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

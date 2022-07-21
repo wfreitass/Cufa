@@ -6,7 +6,8 @@ use App\Http\Requests\PeopleRequest;
 use App\Models\People;
 use Exception;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate as Gate;
 
 class PeopleController extends Controller
 {
@@ -127,16 +128,19 @@ class PeopleController extends Controller
      */
     public function destroy($id)
     {
-        try {
-            if (People::where('id', $id)->delete()) {
-                flash('Dados excluidos com sucesso', 'success');
-                return redirect(route('peoples'));
+        if(Gate::allows('destroy-people', Auth::user())){
+            try {
+                if (People::where('id', $id)->delete()) {
+                    flash('Dados excluidos com sucesso', 'success');
+                    return redirect(route('peoples'));
+                }
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                flash('Error ao excluir dados, entre em contato com o desenvolvedor', 'error');
+                return view('admin.people.home', $error);
             }
-        } catch (Exception $e) {
-            $error = $e->getMessage();
-            flash('Error ao excluir dados, entre em contato com o desenvolvedor', 'error');
-            return view('admin.people.home', $error);
         }
+        return view('admin.people.home');
     }
 
     /**

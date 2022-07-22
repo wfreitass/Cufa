@@ -183,7 +183,7 @@
                                     <a href="{{route('users')}}">Todos</a>
                                 </li>
                                 <li>
-                                    <a href="users-02.html">Criar Usuário</a>
+                                    <a href="{{route('createuser')}}">Criar Usuário</a>
                                 </li>
                             </ul>
                         </li>

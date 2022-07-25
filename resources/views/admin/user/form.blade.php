@@ -9,7 +9,7 @@
             <div class="d-flex justify-content-center">
                 <form
                     action="@php
-					isset($data) ? print(route('updateuser',['id'=>$data['id']])) : print(route('createuser'));
+					isset($data) ? print(route('updateuser',['id'=>$data['id']])) : print(route('salveuser'));
 				@endphp"
                     method="post" class="w-75 ">
                     @csrf
@@ -32,9 +32,15 @@
                         </div>
                         <div class="col">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email"
+                            <input type="email" class="form-control @error('name') is-invalid @enderror" id="email"
+                                name="email"
                                 value="{{ old('email') }}@isset($data) {{ $data['email'] }} @endisset"
                                 placeholder="email@example.com">
+                            @error('email')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     </div>
 
@@ -69,8 +75,7 @@
                         <div class="col">
                             <label for="password" class="form-label">Senha</label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                placeholder="*****" id="password" aria-label="password"
-                                name="password"
+                                placeholder="*****" id="password" aria-label="password" name="password"
                                 value="{{ old('password') }}@isset($data) {{ $data['password'] }} @endisset">
                             @error('password')
                                 <div class="invalid-feedback">
@@ -80,29 +85,37 @@
                         </div>
                         <div class="col">
                             <label for="confirmPassword" class="form-label">Confirmar Senha</label>
-                            <input type="password" class="form-control" name="confirmPassword"
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="confirmPassword"
                                 value="{{ old('confirmPassword') }}@isset($data) {{ $data['confirmPassword'] }} @endisset"
-                                placeholder="Na rua da água de coco" id="confirmPassword" aria-label="confirmPassword">
+                                placeholder="Na rua da água de coco" id="confirmPassword" aria-label="confirmPassword"
+                                name="confirmPassword">
+								@error('confirmPassword')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     </div>
 
-					<div class="row">
-						<div class="col-md-6">
-							<label for="is_admin" class="form-label">
-								Administrador
-							</label>
-							<select class="border-0 form-select" id="is_admin" name="admin" aria-label="Default select example">
-								<option value="0">Não</option>
-								<option value="1">Sim</option>
-							  </select>
-						</div>
-						<div class="col-md-6">
-							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="checkbox" id="showpassword" value="show">
-								<label class="form-check-label" for="showpassword">Mostrar senha</label>
-							  </div>
-						</div>
-					</div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="is_admin" class="form-label">
+                                Administrador
+                            </label>
+                            <select class="border-0 form-select" id="is_admin" name="admin"
+                                aria-label="Default select example">
+                                <option value="0">Não</option>
+                                <option value="1">Sim</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input " type="checkbox" id="showpassword" value="show">
+                                <label class="form-check-label " for="showpassword" style="color: #dc3545">Mostrar
+                                    senha</label>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="mt-3 d-flex justify-content-end mb-3">
                         <button class="btn btn-primary">
@@ -119,5 +132,5 @@
 @endsection
 
 @section('script')
-<script src="{{asset('js/showPasssowrd.js')}}"></script>
+    <script src="{{ asset('js/showPassword.js') }}"></script>
 @endsection

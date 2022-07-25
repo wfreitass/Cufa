@@ -25,7 +25,8 @@ Route::get('/', function () {
 Route::controller(UserController::class)->group(function () {
     Route::get('/admin/users', 'index')->name('users');
     Route::get('/admin/users/createuser', 'create')->name('createuser');
-    // Route::get('/admin/users/createuser','create')->name('createuser');
+    Route::post('/admin/users/salveuser', 'store')->name('salveuser');
+  
 });
 
 Route::controller(PeopleController::class)->group(function () {

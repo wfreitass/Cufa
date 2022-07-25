@@ -91,10 +91,16 @@
 							<label for="is_admin" class="form-label">
 								Administrador
 							</label>
-							<select class="form-select" id="is_admin" name="admin" aria-label="Default select example">
+							<select class="border-0 form-select" id="is_admin" name="admin" aria-label="Default select example">
 								<option value="0">Não</option>
 								<option value="1">Sim</option>
 							  </select>
+						</div>
+						<div class="col-md-6">
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="checkbox" id="showpassword" value="show">
+								<label class="form-check-label" for="showpassword">Mostrar senha</label>
+							  </div>
 						</div>
 					</div>
 
@@ -110,4 +116,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+<script src="{{asset('js/showPasssowrd.js')}}"></script>
 @endsection

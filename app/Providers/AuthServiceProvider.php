@@ -29,5 +29,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('destroy-people', function(User $user){
             return $user->is_admin == true;
         });
+
+        Gate::define('is_admin', function(User $user){
+            return $user->is_admin == true;
+        });
     }
 }

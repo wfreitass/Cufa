@@ -305,7 +305,7 @@
                             </button>
                             <ul class="users-item-dropdown nav-user-dropdown dropdown">
                                 <li><a href=""><span>{{ Auth::user()->name }}</span></a></li>
-                                <li><a href="##">
+                                <li><a href="{{route('edituser', ['id' =>Auth::user()->id])}}">
                                         <i data-feather="user" aria-hidden="true"></i>
                                         <span>Perfil</span>
                                     </a></li>

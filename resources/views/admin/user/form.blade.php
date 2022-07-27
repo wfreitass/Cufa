@@ -4,15 +4,14 @@
     <div class="d-flex justify-content-center">
         <h2 class="main-title">Adicionar um novo usuário</h2>
     </div>
-	{{-- @dd($error1) --}}
     <div class="container">
         <div class="row">
             <div class="d-flex justify-content-center">
                 <form
                     action="{{route('salveuser')}}"
-                    {{-- action="@php
+                    action="@php
 					isset($data) ? print(route('updateuser',['id'=>$data['id']])) : print(route('salveuser'));
-				@endphp" --}}
+				@endphp"
                     method="post" class="w-75 ">
                     @csrf
                     @isset($data)
@@ -72,54 +71,60 @@
                             @enderror
                         </div>
                     </div>
+					{{-- @dd(Auth::user()->is_admin) --}}
 
-                    <div class="row">
-						<div class="col">
-                            <label for="password" class="form-label">Senha</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
-                                value="{{ old('password') }}@isset($data) {{ $data['password'] }} @endisset"
-                                placeholder="******" id="password" aria-label="password"
-                                name="password">
-								@error('password')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="col">
-                            <label for="confirmPassword" class="form-label">Confirmar Senha</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="confirmPassword"
-                                value="{{ old('confirmPassword') }}@isset($data) {{ $data['confirmPassword'] }} @endisset"
-                                placeholder="******" id="confirmPassword" aria-label="confirmPassword"
-                                name="confirmPassword">
-								@error('confirmPassword')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                    </div>
-					{{-- @dd($data) --}}
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="is_admin" class="form-label">
-                                Administrador
-                            </label>
-                            <select class="border-0 form-select" id="is_admin" name="is_admin"
-                                aria-label="Default select example">
-                                <option value="0">Não</option>
-                                <option value="1">Sim</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input " type="checkbox" id="showpassword" value="show">
-                                <label class="form-check-label " for="showpassword" style="color: #dc3545">Mostrar
-                                    senha</label>
-                            </div>
-                        </div>
-                    </div>
+					@empty ($data)
+						<div class="row">
+							<div class="col">
+								<label for="password" class="form-label">Senha</label>
+								<input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
+									value="{{ old('password') }}@isset($data) {{ $data['password'] }} @endisset"
+									placeholder="******" id="password" aria-label="password"
+									name="password">
+									@error('password')
+									<div class="invalid-feedback">
+										{{ $message }}
+									</div>
+								@enderror
+							</div>
+							<div class="col">
+								<label for="confirmPassword" class="form-label">Confirmar Senha</label>
+								<input type="password" class="form-control @error('password') is-invalid @enderror" name="confirmPassword"
+									value="{{ old('confirmPassword') }}@isset($data) {{ $data['confirmPassword'] }} @endisset"
+									placeholder="******" id="confirmPassword" aria-label="confirmPassword"
+									name="confirmPassword">
+									@error('confirmPassword')
+									<div class="invalid-feedback">
+										{{ $message }}
+									</div>
+								@enderror
+							</div>
+						</div>
+					@endempty
 
+					@can('is_admin', Auth::user())
+						<div class="row">
+							<div class="col-md-6">
+								<label for="is_admin" class="form-label">
+									Administrador
+								</label>
+								<select class="border-0 form-select" id="is_admin" name="is_admin"
+									aria-label="Default select example">
+									<option value="0">Não</option>
+									<option value="1" @if (Auth::user()->is_admin)
+									selected
+									@endif >Sim</option>
+								</select>
+							</div>
+							<div class="col-md-6">
+								<div class="form-check form-check-inline">
+									<input class="form-check-input " type="checkbox" id="showpassword" value="show">
+									<label class="form-check-label " for="showpassword" style="color: #dc3545">Mostrar
+										senha</label>
+								</div>
+							</div>
+						</div>
+					@endcan
                     <div class="mt-3 d-flex justify-content-end mb-3">
                         <button class="btn btn-primary">
                             @php
@@ -133,7 +138,6 @@
         </div>
     </div>
 @endsection
-
 @section('script')
     <script src="{{ asset('js/showPassword.js') }}"></script>
 @endsection

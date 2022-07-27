@@ -92,7 +92,14 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $data = User::where('id', $id)->first();
+            // dd($data);
+            return view('admin.user.form', ['data' => $data]);
+        } catch (\Throwable $th) {
+            flash("Não foi possível visualizar os dados de usuário, entrar em contato com o desenvolvedor...")->error();
+            return view('admin.home');
+        }
     }
 
     /**

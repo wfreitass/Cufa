@@ -6,18 +6,20 @@ use App\Http\Requests\UserResquest;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-
+    private $user;
     /**
     * Create a new controller instance.
     *
     * @return void
     */
-    public function __construct()
+    public function __construct(User $user)
     {
         $this->middleware('auth');
+        $this->user = $user;
     }
 
     /**
@@ -51,7 +53,15 @@ class UserController extends Controller
         if($request->isMethod('post')){
             try {
                 $data = $request->all();
+                if($data['password'] !== $data['confirmPassword']){
+                    flash("As senhas não são iguais !!!")->error();
+                    return view('admin.user.form', ['data' =>$data]);
+                }
+                unset($data['confirmPassword']);
+                $data['password'] = Hash::make($data['password']);
+                // dd($data);
                 $data = User::create($data);
+
                 flash("Usuário Adicionado ao sistema", 'success');
                 return view('admin.user.form', ['data' =>$data]);
                

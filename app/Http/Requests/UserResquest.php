@@ -29,7 +29,7 @@ class UserResquest extends FormRequest
             'cpf' => ['required', 'min:11', 'max:11', 'string'],
             'phone' => ['required', 'min:8', 'max:11', 'string'],
             'password' => ['required', 'min:8', 'string'],
-            'confirmPassword' => ['required', 'min:8', 'string', 'same:password'],
+            'confirmPassword' => ['required', 'min:8', 'string'],
         ];
     }
 
@@ -53,7 +53,7 @@ class UserResquest extends FormRequest
             'password.required' => 'Campo Obrigatório',
             'password.min' => 'O campo preciso de no mínimo :min caracters',
             'password.string' => 'O campo precisa ser uma frase',
-            // 'password.confirmed' => 'As senhas não são iguais',
+            'password.confirmed' => 'As senhas não são iguais',
             'confirmPassword.required' => 'Campo Obrigatório',
             'confirmPassword.min' => 'O campo preciso de no mínimo :min caracters',
             'confirmPassword.string' => 'O campo precisa ser uma frase',

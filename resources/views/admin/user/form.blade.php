@@ -4,13 +4,15 @@
     <div class="d-flex justify-content-center">
         <h2 class="main-title">Adicionar um novo usuário</h2>
     </div>
+	{{-- @dd($error1) --}}
     <div class="container">
         <div class="row">
             <div class="d-flex justify-content-center">
                 <form
-                    action="@php
+                    action="{{route('salveuser')}}"
+                    {{-- action="@php
 					isset($data) ? print(route('updateuser',['id'=>$data['id']])) : print(route('salveuser'));
-				@endphp"
+				@endphp" --}}
                     method="post" class="w-75 ">
                     @csrf
                     @isset($data)
@@ -72,12 +74,13 @@
                     </div>
 
                     <div class="row">
-                        <div class="col">
+						<div class="col">
                             <label for="password" class="form-label">Senha</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                placeholder="*****" id="password" aria-label="password" name="password"
-                                value="{{ old('password') }}@isset($data) {{ $data['password'] }} @endisset">
-                            @error('password')
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
+                                value="{{ old('password') }}@isset($data) {{ $data['password'] }} @endisset"
+                                placeholder="******" id="password" aria-label="password"
+                                name="password">
+								@error('password')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
@@ -87,7 +90,7 @@
                             <label for="confirmPassword" class="form-label">Confirmar Senha</label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" name="confirmPassword"
                                 value="{{ old('confirmPassword') }}@isset($data) {{ $data['confirmPassword'] }} @endisset"
-                                placeholder="Na rua da água de coco" id="confirmPassword" aria-label="confirmPassword"
+                                placeholder="******" id="confirmPassword" aria-label="confirmPassword"
                                 name="confirmPassword">
 								@error('confirmPassword')
                                 <div class="invalid-feedback">
@@ -96,13 +99,13 @@
                             @enderror
                         </div>
                     </div>
-
+					{{-- @dd($data) --}}
                     <div class="row">
                         <div class="col-md-6">
                             <label for="is_admin" class="form-label">
                                 Administrador
                             </label>
-                            <select class="border-0 form-select" id="is_admin" name="admin"
+                            <select class="border-0 form-select" id="is_admin" name="is_admin"
                                 aria-label="Default select example">
                                 <option value="0">Não</option>
                                 <option value="1">Sim</option>

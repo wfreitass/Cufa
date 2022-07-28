@@ -117,7 +117,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserResquest $request, $id)
     {
         if ($request->isMethod('PUT')) {
             try {
@@ -128,7 +128,7 @@ class UserController extends Controller
                     return view('admin.user.form', array('data' => $data));
                 }
             } catch (Exception $e) {
-                flash("Não foi possível visualizar os dados de usuário, entrar em contato com o desenvolvedor...")->error();
+                flash("Não foi possível editar os dados de usuário, entrar em contato com o desenvolvedor...")->error();
                 return view('admin.home', ['error' => $e]);
             }
         }

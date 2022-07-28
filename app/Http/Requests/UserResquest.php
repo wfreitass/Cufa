@@ -28,8 +28,8 @@ class UserResquest extends FormRequest
             'email' => ['email', 'string', 'required'],
             'cpf' => ['required', 'min:11', 'max:11', 'string'],
             'phone' => ['required', 'min:8', 'max:11', 'string'],
-            'password' => ['required', 'min:8', 'string'],
-            'confirmPassword' => ['required', 'min:8', 'string'],
+            'password' => ['min:8', 'string'],
+            'confirmPassword' => ['min:8', 'string'],
         ];
     }
 

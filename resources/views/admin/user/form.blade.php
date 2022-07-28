@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+	<div class="d-flex justify-content-start">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item "><a href="{{ route('home') }}">Home</a></li>
+				<li class="breadcrumb-item " aria-current="page"><a href="{{ route('users') }}">Usuários</a></li>
+				<li class="breadcrumb-item  active" aria-current="page"><a href="{{ route('users') }}">Novo Usuário</a></li>
+			</ol>
+		</nav>
+	</div>
     <div class="d-flex justify-content-center">
         <h2 class="main-title">Adicionar um novo usuário</h2>
     </div>
@@ -58,7 +67,7 @@
                         <div class="col">
                             <label for="telefone" class="form-label">Telefone</label>
                             <input type="text" class="form-control @error('phone') is-invalid @enderror"
-                                placeholder="61 992780548" name="phone" id="telefone"
+                                placeholder="61 992780548" name="phone" id="telefone" maxlength="11"
                                 value="{{old('phone')}}@isset($data){{$data['phone']}}@endisset"
                                 aria-label="telefone" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                             @error('phone')
@@ -106,7 +115,11 @@
                                 <select class="border-0 form-select" id="is_admin" name="is_admin"
                                     aria-label="Default select example">
                                     <option value="0">Não</option>
-                                    <option value="1" @if ($data['is_admin']) selected @endif>Sim</option>
+                                    <option value="1"  @php
+										if(isset($data['is_admin']) && $data['is_admin'] == true){
+											print("selected");
+										}
+									@endphp>Sim</option>
                                 </select>
                             </div>
 							@empty($data)

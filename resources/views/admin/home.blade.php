@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2 class="main-title">Dashboard</h2>
+    <h2 class="main-title">Inicio</h2>
     <div class="row stat-cards">
         <div class="col-md-6 col-xl-3">
             <article class="stat-cards-item">

@@ -54,7 +54,7 @@
                     <ul class="sidebar-body-menu">
                         <li>
                             <a class="active" href="{{route('home')}}"><span class="icon home"
-                                    aria-hidden="true"></span>Dashboard</a>
+                                    aria-hidden="true"></span>Inicio</a>
                         </li>
                         <li>
                             <a class="show-cat-btn" href="##">

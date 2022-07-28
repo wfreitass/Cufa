@@ -106,7 +106,7 @@
                                 <select class="border-0 form-select" id="is_admin" name="is_admin"
                                     aria-label="Default select example">
                                     <option value="0">Não</option>
-                                    <option value="1" @if (Auth::user()->is_admin) selected @endif>Sim</option>
+                                    <option value="1" @if ($data['is_admin']) selected @endif>Sim</option>
                                 </select>
                             </div>
 							@empty($data)

@@ -128,8 +128,6 @@ class PeopleController extends Controller
      */
     public function destroy($id)
     {
-
-
         if (Gate::allows('destroy-people', Auth::user())) {
             try {
                 if (People::where('id', $id)->delete()) {

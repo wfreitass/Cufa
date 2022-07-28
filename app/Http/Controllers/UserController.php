@@ -6,6 +6,8 @@ use App\Http\Requests\UserResquest;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -29,7 +31,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.user.home');
+        if(User::count() > 0){
+            $data = User::select('id','name', 'email', 'phone')->orderBy('name', 'ASC')->paginate(15);
+            return view('admin.user.home', ['data' => $data]);
+        }else{
+            flash('Nenhum usuário encontrado na base da dados')->warning();
+            return view('admin.user.home');
+        }
+        
     }
 
     /**
@@ -133,6 +142,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Gate::allows('is_admin', Auth::user())) {
+            try {
+                if (User::where('id', $id)->delete()) {
+                    flash('Dados excluidos com sucesso', 'success');
+                    return redirect(route('users'));
+                }
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                flash('Error ao excluir dados, entre em contato com o desenvolvedor', 'error');
+                return view('admin.user.home', $error);
+            }
+        }
+        return view('admin.user.home');
     }
 }

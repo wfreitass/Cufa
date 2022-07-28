@@ -28,7 +28,7 @@ Route::controller(UserController::class)->group(function () {
     Route::post('/admin/users/salveuser', 'store')->name('salveuser');
     Route::get('/admin/users/edituser/{id}','edit')->name('edituser');
     Route::put('/admin/users/updateuser/{id}', 'update')->name('updateuser');
-  
+    Route::delete('admin/user/destroyuser/{id}', 'destroy')->name('destroyuser')->can('is_admin', Auth::user());
 });
 
 Route::controller(PeopleController::class)->group(function () {

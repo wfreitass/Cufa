@@ -24,10 +24,6 @@ class User extends Authenticatable
         'is_admin',
         'cpf',
         'phone',
-        'email_verified_at',
-        'remember_token',
-        'created_at',
-        'updated_at'
     ];
 
     /**

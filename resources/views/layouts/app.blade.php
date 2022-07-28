@@ -24,7 +24,7 @@
     <link rel="shortcut icon" href="{{ asset('images/Logo.svg') }} " type="image/x-icon">
     <!-- Custom styles -->
     <link rel="stylesheet" href="{{ asset('css/layout/style.css') }} ">
-	@yield('css')
+    @yield('css')
 </head>
 
 <body>
@@ -36,7 +36,7 @@
         <aside class="sidebar">
             <div class="sidebar-start">
                 <div class="sidebar-head">
-                    <a href="{{route('home')}}" class="logo-wrapper" title="Home">
+                    <a href="{{ route('home') }}" class="logo-wrapper" title="Home">
                         <span class="sr-only">Home</span>
                         <span class="icon logo" aria-hidden="true"></span>
                         <div class="logo-text">
@@ -53,12 +53,13 @@
                 <div class="sidebar-body">
                     <ul class="sidebar-body-menu">
                         <li>
-                            <a class="active" href="{{route('home')}}"><span class="icon home"
+                            <a class="active" href="{{ route('home') }}"><span class="icon home"
                                     aria-hidden="true"></span>Inicio</a>
                         </li>
                         <li>
                             <a class="show-cat-btn" href="##">
-                                <span class="icon" aria-hidden="true"><i data-feather="user"></i></span><span>Pessoas</span>
+                                <span class="icon" aria-hidden="true"><i
+                                        data-feather="user"></i></span><span>Pessoas</span>
                                 <span class="category__btn transparent-btn" title="Open list">
                                     <span class="sr-only">Open list</span>
                                     <span class="icon arrow-down" aria-hidden="true"></span>
@@ -66,110 +67,16 @@
                             </a>
                             <ul class="cat-sub-menu">
                                 <li>
-                                    <a href="{{route('peoples')}}">Todas</a>
+                                    <a href="{{ route('peoples') }}">Todas</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('createpeople')}}">Adicionar</a>
+                                    <a href="{{ route('createpeople') }}">Adicionar</a>
                                 </li>
                             </ul>
-                        </li>
-						{{-- Post --}}
-                        {{-- <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon document" aria-hidden="true"></span>Posts
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="posts.html">All Posts</a>
-                                </li>
-                                <li>
-                                    <a href="new-post.html">Add new post</a>
-                                </li>
-                            </ul>
-                        </li> --}}
-
-                        <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon folder" aria-hidden="true"></span>Categories
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="categories.html">All categories</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon image" aria-hidden="true"></span>Media
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="media-01.html">Media-01</a>
-                                </li>
-                                <li>
-                                    <a href="media-02.html">Media-02</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon paper" aria-hidden="true"></span>Pages
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="pages.html">All pages</a>
-                                </li>
-                                <li>
-                                    <a href="new-page.html">Add new page</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="comments.html">
-                                <span class="icon message" aria-hidden="true"></span>
-                                Comments
-                            </a>
-                            <span class="msg-counter">7</span>
                         </li>
                     </ul>
-                    <span class="system-menu__title">system</span>
+                    <span class="system-menu__title">Sistema</span>
                     <ul class="sidebar-body-menu">
-                        <li>
-                            <a href="appearance.html"><span class="icon edit" aria-hidden="true"></span>Appearance</a>
-                        </li>
-                        <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon category" aria-hidden="true"></span>Extentions
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="extention-01.html">Extentions-01</a>
-                                </li>
-                                <li>
-                                    <a href="extention-02.html">Extentions-02</a>
-                                </li>
-                            </ul>
-                        </li>
                         <li>
                             <a class="show-cat-btn" href="##">
                                 <span class="icon user-3" aria-hidden="true"></span><span>Usuários</span>
@@ -180,15 +87,12 @@
                             </a>
                             <ul class="cat-sub-menu">
                                 <li>
-                                    <a href="{{route('users')}}">Todos</a>
+                                    <a href="{{ route('users') }}">Todos</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('createuser')}}">Criar Usuário</a>
+                                    <a href="{{ route('createuser') }}">Criar Usuário</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="##"><span class="icon setting" aria-hidden="true"></span>Settings</a>
                         </li>
                     </ul>
                 </div>
@@ -290,8 +194,8 @@
                             </ul>
                         </div> --}}
                         <div class="nav-user-wrapper">
-                            <button href="##" class="nav-user-btn dropdown-btn"
-                                title="{{ Auth::user()->name }}" type="button">
+                            <button href="##" class="nav-user-btn dropdown-btn" title="{{ Auth::user()->name }}"
+                                type="button">
                                 <span class="sr-only">{{ Auth::user()->name }}</span>
                                 <span class="nav-user-img">
                                     <picture>
@@ -305,7 +209,7 @@
                             </button>
                             <ul class="users-item-dropdown nav-user-dropdown dropdown">
                                 <li><a href=""><span>{{ Auth::user()->name }}</span></a></li>
-                                <li><a href="{{route('edituser', ['id' =>Auth::user()->id])}}">
+                                <li><a href="{{ route('edituser', ['id' => Auth::user()->id]) }}">
                                         <i data-feather="user" aria-hidden="true"></i>
                                         <span>Perfil</span>
                                     </a></li>
@@ -402,10 +306,10 @@
                             </article>
                         </div>
                     </div> --}}
-					<div class="row">
-						@include('flash::message')
-						@yield('content')
-					</div>
+                    <div class="row">
+                        @include('flash::message')
+                        @yield('content')
+                    </div>
                 </div>
             </main>
             <!-- ! Footer -->
@@ -433,39 +337,36 @@
     <!-- Custom scripts -->
     <script src="{{ asset('js/layout/script.js') }}"></script>
     {{-- <script src="js/script.js"></script> --}}
-	@yield('script')
+    @yield('script')
 
 
-	{{-- <script src="{{ asset('js/darkModeBootstrap.js') }}" defer></script> --}}
-	<script>
-		// var themeDark = localStorage.getItem('darkMode');
+    {{-- <script src="{{ asset('js/darkModeBootstrap.js') }}" defer></script> --}}
+    <script>
+        // var themeDark = localStorage.getItem('darkMode');
 
-		// var darkThemeToggle = document.querySelector('.theme-switcher');
+        // var darkThemeToggle = document.querySelector('.theme-switcher');
 
-		// darkThemeToggle.addEventListener("click", function(){
-		// 	let tables = window.document.getElementsByTagName("table") ;
+        // darkThemeToggle.addEventListener("click", function(){
+        // 	let tables = window.document.getElementsByTagName("table") ;
 
-		// 	if(tables.length && themeDark === 'enabled'){
-		// 		for(let tb in tables){
-		// 			console.log(tables[tb]);
-		// 			tables[tb].classList.remove('table-primary');
-		// 			tables[tb].classList.add('table-dark');
-		// 		}
-		// 	}else{
-		// 		for(let tb in tables){
-		// 			console.log(tables[tb]);
-		// 			tables[tb].classList.remove('table-dark');
-		// 			tables[tb].classList.add('table-primary');
-		// 		}
-		// 	}
+        // 	if(tables.length && themeDark === 'enabled'){
+        // 		for(let tb in tables){
+        // 			console.log(tables[tb]);
+        // 			tables[tb].classList.remove('table-primary');
+        // 			tables[tb].classList.add('table-dark');
+        // 		}
+        // 	}else{
+        // 		for(let tb in tables){
+        // 			console.log(tables[tb]);
+        // 			tables[tb].classList.remove('table-dark');
+        // 			tables[tb].classList.add('table-primary');
+        // 		}
+        // 	}
 
-		// });
+        // });
+    </script>
 
-	</script>
-
-	<script>
-
-	</script>
+    <script></script>
 </body>
 
 </html>

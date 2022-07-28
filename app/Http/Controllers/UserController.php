@@ -12,10 +12,10 @@ class UserController extends Controller
 {
     private $user;
     /**
-    * Create a new controller instance.
-    *
-    * @return void
-    */
+     * Create a new controller instance.
+     *
+     * @return void
+     */
     public function __construct(User $user)
     {
         $this->middleware('auth');
@@ -39,7 +39,7 @@ class UserController extends Controller
      */
     public function create()
     {
-       return view('admin.user.form');
+        return view('admin.user.form');
     }
 
     /**
@@ -50,12 +50,12 @@ class UserController extends Controller
      */
     public function store(UserResquest $request)
     {
-        if($request->isMethod('post')){
+        if ($request->isMethod('post')) {
             try {
                 $data = $request->all();
-                if($data['password'] !== $data['confirmPassword']){
+                if ($data['password'] !== $data['confirmPassword']) {
                     flash("As senhas não são iguais !!!")->error();
-                    return view('admin.user.form', ['data' =>$data]);
+                    return view('admin.user.form', ['data' => $data]);
                 }
                 unset($data['confirmPassword']);
                 $data['password'] = Hash::make($data['password']);
@@ -63,8 +63,7 @@ class UserController extends Controller
                 $data = User::create($data);
 
                 flash("Usuário Adicionado ao sistema", 'success');
-                return view('admin.user.form', ['data' =>$data]);
-               
+                return view('admin.user.form', ['data' => $data]);
             } catch (Exception $e) {
                 $error = $e->getMessage();
                 flash('Error ao Adicionar um novo usuário, entre em contato com o desenvolvedor')->error();
@@ -111,7 +110,19 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->isMethod('PUT')) {
+            try {
+                $User = User::where('id', $id)->first();
+                if ($User->update($request->all())) {
+                    $data = User::where('id', $id)->first();
+                    flash("Usuário atualizado com sucesso!")->success();
+                    return view('admin.user.form', array('data' => $data));
+                }
+            } catch (Exception $e) {
+                flash("Não foi possível visualizar os dados de usuário, entrar em contato com o desenvolvedor...")->error();
+                return view('admin.home', ['error' => $e]);
+            }
+        }
     }
 
     /**

@@ -9,7 +9,7 @@
         </nav>
     </div>
     <div class="d-flex justify-content-center">
-        <h2 class="main-title">Todas as pessoas</h2>
+        <h2 class="main-title">Todos os Usuários</h2>
     </div>
     <div class="container">
         <div class="row">
@@ -37,6 +37,7 @@
                             </tr>
                         </thead>
                         <tbody>
+							{{-- @dd($data) --}}
                             @foreach ($data as $d)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
@@ -78,7 +79,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('searchpeople') }}" method="POST" id="formSearch">
+                    <form action="{{ route('searchuser') }}" method="POST" id="formSearch">
                         @csrf
                         <div class="mb-3">
                             <label for="recipient-name" class="col-form-label">CPF</label>

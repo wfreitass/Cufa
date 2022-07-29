@@ -31,14 +31,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        if(User::count() > 0){
-            $data = User::select('id','name', 'email', 'phone')->orderBy('name', 'ASC')->paginate(15);
+        if (User::count() > 0) {
+            $data = User::select('id', 'name', 'email', 'phone')->orderBy('name', 'ASC')->paginate(15);
             return view('admin.user.home', ['data' => $data]);
-        }else{
+        } else {
             flash('Nenhum usuário encontrado na base da dados')->warning();
             return view('admin.user.home');
         }
-        
     }
 
     /**
@@ -155,5 +154,25 @@ class UserController extends Controller
             }
         }
         return view('admin.user.home');
+    }
+
+
+    public function search(Request $request)
+    {
+        if ($request->isMethod('POST')) {
+            try {
+                $data = User::where('cpf', $request->all()['cpf'])->get();
+                if ($data->count() > 0) {
+                    return view('admin.user.home', ['data' => $data]);
+                }
+                
+                flash('Usuário não encontrado na base de dados')->warning();
+                return view('admin.user.home');
+            } catch (Exception $e) {
+                flash('Usuário não encontrado na base de dados')->error();
+                return view('admin.user.home',['data' => $e]);
+            }
+           
+        }
     }
 }

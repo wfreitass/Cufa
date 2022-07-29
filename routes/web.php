@@ -23,13 +23,13 @@ Route::get('/', function () {
 
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/admin/users', 'index')->name('users');
-    Route::get('/admin/users/createuser', 'create')->name('createuser');
-    Route::post('/admin/users/salveuser', 'store')->name('salveuser');
+    Route::get('/admin/users', 'index')->name('users')->can('is_admin', Auth::user());
+    Route::get('/admin/users/createuser', 'create')->name('createuser')->can('is_admin', Auth::user());
+    Route::post('/admin/users/salveuser', 'store')->name('salveuser')->can('is_admin', Auth::user());
     Route::get('/admin/users/edituser/{id}','edit')->name('edituser');
     Route::put('/admin/users/updateuser/{id}', 'update')->name('updateuser');
     Route::delete('admin/user/destroyuser/{id}', 'destroy')->name('destroyuser')->can('is_admin', Auth::user());
-    Route::post('/admin/users/searchuser', 'search')->name('searchuser');
+    Route::post('/admin/users/searchuser', 'search')->name('searchuser')->can('is_admin', Auth::user());
 });
 
 Route::controller(PeopleController::class)->group(function () {

@@ -75,26 +75,28 @@
                             </ul>
                         </li>
                     </ul>
-                    <span class="system-menu__title">Sistema</span>
-                    <ul class="sidebar-body-menu">
-                        <li>
-                            <a class="show-cat-btn" href="##">
-                                <span class="icon user-3" aria-hidden="true"></span><span>Usuários</span>
-                                <span class="category__btn transparent-btn" title="Open list">
-                                    <span class="sr-only">Open list</span>
-                                    <span class="icon arrow-down" aria-hidden="true"></span>
-                                </span>
-                            </a>
-                            <ul class="cat-sub-menu">
-                                <li>
-                                    <a href="{{ route('users') }}">Todos</a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('createuser') }}">Criar Usuário</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
+					@can('is_admin',Auth::user())
+						<span class="system-menu__title">Sistema</span>
+						<ul class="sidebar-body-menu">
+							<li>
+								<a class="show-cat-btn" href="##">
+									<span class="icon user-3" aria-hidden="true"></span><span>Usuários</span>
+									<span class="category__btn transparent-btn" title="Open list">
+										<span class="sr-only">Open list</span>
+										<span class="icon arrow-down" aria-hidden="true"></span>
+									</span>
+								</a>
+								<ul class="cat-sub-menu">
+									<li>
+										<a href="{{ route('users') }}">Todos</a>
+									</li>
+									<li>
+										<a href="{{ route('createuser') }}">Criar Usuário</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					@endcan
                 </div>
             </div>
             {{-- <div class="sidebar-footer">

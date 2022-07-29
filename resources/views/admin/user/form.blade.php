@@ -4,14 +4,22 @@
 	<div class="d-flex justify-content-start">
 		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item "><a href="{{ route('home') }}">Home</a></li>
-				<li class="breadcrumb-item " aria-current="page"><a href="{{ route('users') }}">Usuários</a></li>
-				<li class="breadcrumb-item  active" aria-current="page"><a href="{{ route('users') }}">Novo Usuário</a></li>
+				<li class="breadcrumb-item "><a href="{{ route('home') }}" class="cufa-link">Home</a></li>
+				<li class="breadcrumb-item " aria-current="page"><a href="{{ route('users') }}" class="cufa-link">Usuários</a></li>
+				<li class="breadcrumb-item  active" aria-current="page"><a href="{{ route('users') }}">@empty($data)
+					Editando usuário
+					@else
+					Novo Usuário
+				@endempty</a></li>
 			</ol>
 		</nav>
 	</div>
     <div class="d-flex justify-content-center">
-        <h2 class="main-title">Adicionar um novo usuário</h2>
+        <h2 class="main-title">@empty($data)
+			Adicionar um novo usuário
+			@else
+			Editando usuário
+		@endempty </h2>
     </div>
     <div class="container">
         <div class="row">

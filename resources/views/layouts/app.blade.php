@@ -19,11 +19,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/layout/style.css') }} ">
+    <link rel="stylesheet" href="{{ asset('css/layout/cufa.css') }} ">
+
     {{-- elegant CSS --}}
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('images/Logo.svg') }} " type="image/x-icon">
     <!-- Custom styles -->
-    <link rel="stylesheet" href="{{ asset('css/layout/style.css') }} ">
     @yield('css')
 </head>
 
@@ -50,14 +52,20 @@
                         <span class="icon menu-toggle" aria-hidden="true"></span>
                     </button>
                 </div>
+
                 <div class="sidebar-body">
                     <ul class="sidebar-body-menu">
                         <li>
-                            <a class="active" href="{{ route('home') }}"><span class="icon home"
+                            <a class="@if (request()->is('home'))
+								active
+							@endif" href="{{ route('home') }}"><span class="icon home"
                                     aria-hidden="true"></span>Inicio</a>
                         </li>
                         <li>
-                            <a class="show-cat-btn" href="##">
+
+                            <a class="show-cat-btn @if (request()->is('admin/people*'))
+								active
+							@endif" href="##">
                                 <span class="icon" aria-hidden="true"><i
                                         data-feather="user"></i></span><span>Pessoas</span>
                                 <span class="category__btn transparent-btn" title="Open list">
@@ -79,7 +87,9 @@
 						<span class="system-menu__title">Sistema</span>
 						<ul class="sidebar-body-menu">
 							<li>
-								<a class="show-cat-btn" href="##">
+								<a class="show-cat-btn @if (request()->is('admin/users*'))
+									active
+								@endif" href="##">
 									<span class="icon user-3" aria-hidden="true"></span><span>Usuários</span>
 									<span class="category__btn transparent-btn" title="Open list">
 										<span class="sr-only">Open list</span>

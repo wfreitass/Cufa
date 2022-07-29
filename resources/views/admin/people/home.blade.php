@@ -3,8 +3,8 @@
     <div class="d-flex justify-content-start">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item "><a href="{{ route('home') }}">Home</a></li>
-                <li class="breadcrumb-item  active" aria-current="page"><a href="{{ route('peoples') }}">Pessoas</a></li>
+                <li class="breadcrumb-item "><a href="{{ route('home') }}" class="cufa-link">Home</a></li>
+                <li class="breadcrumb-item  active" aria-current="page"><a href="{{ route('peoples') }}" >Pessoas</a></li>
             </ol>
         </nav>
     </div>

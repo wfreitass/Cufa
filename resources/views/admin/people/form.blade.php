@@ -1,8 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
+	<div class="d-flex justify-content-start">
+		<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item "><a href="{{ route('home') }}" class="cufa-link">Home</a></li>
+				<li class="breadcrumb-item " aria-current="page"><a href="{{ route('peoples') }}" class="cufa-link">Pessoas</a></li>
+				<li class="breadcrumb-item  active " aria-current="page"><a href="{{ route('createpeople') }}">@php
+				 	isset($data) ? print('Editando dados da pessoa') : print('Adicionar uma nova Pessoa');
+				@endphp
+				</a></li>
+			</ol>
+		</nav>
+	</div>
     <div class="d-flex justify-content-center">
-        <h2 class="main-title">Adicionar uma nova pessoa</h2>
+        <h2 class="main-title">
+			@empty ($data)
+				Adicionar uma nova pessoa
+				@else
+				Editando da Pessoa
+			@endempty
+		</h2>
     </div>
     <div class="container">
         <div class="row">

@@ -1,0 +1,9 @@
+/* CSS para não alterar o css do template Elegant Dashboard */
+
+.darkmode a.cufa-link{
+    color: #D6D7E3 !important;
+  }
+  
+  .darkmode a.cufa-link:hover{
+    color: #9b9daa !important;
+  }

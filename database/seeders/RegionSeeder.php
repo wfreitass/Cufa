@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\People;
 use Illuminate\Database\Seeder;
 
-class PeopleSeeder extends Seeder
+class RegionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +13,6 @@ class PeopleSeeder extends Seeder
      */
     public function run()
     {
-        People::factory()->count(36)->create();
+        //
     }
 }

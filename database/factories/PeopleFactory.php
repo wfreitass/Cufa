@@ -19,7 +19,7 @@ class PeopleFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->text(20),
             'complement' => $this->faker->text(5),
-            'cpf' => $this->faker->numerify('############'),
+            'cpf' => $this->faker->numerify('###########'),
         ];
     }
 }

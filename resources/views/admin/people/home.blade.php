@@ -26,6 +26,7 @@
         <div class="row">
             <div class="d-flex justify-content-center">
                 @isset($data)
+					<i class="fa-solid fa-address-card"></i>
                     <table class="table table-primary table-striped table-hover table-bordered align-middle">
                         <thead>
                             <tr>

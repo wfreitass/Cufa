@@ -56,16 +56,12 @@
                 <div class="sidebar-body">
                     <ul class="sidebar-body-menu">
                         <li>
-                            <a class="@if (request()->is('home'))
-								active
-							@endif" href="{{ route('home') }}"><span class="icon home"
-                                    aria-hidden="true"></span>Inicio</a>
+                            <a class="@if (request()->is('home')) active @endif" href="{{ route('home') }}"><span
+                                    class="icon home" aria-hidden="true"></span>Inicio</a>
                         </li>
                         <li>
 
-                            <a class="show-cat-btn @if (request()->is('admin/people*'))
-								active
-							@endif" href="##">
+                            <a class="show-cat-btn @if (request()->is('admin/people*')) active @endif" href="##">
                                 <span class="icon" aria-hidden="true"><i
                                         data-feather="user"></i></span><span>Pessoas</span>
                                 <span class="category__btn transparent-btn" title="Open list">
@@ -83,30 +79,49 @@
                             </ul>
                         </li>
                     </ul>
-					@can('is_admin',Auth::user())
-						<span class="system-menu__title">Sistema</span>
-						<ul class="sidebar-body-menu">
-							<li>
-								<a class="show-cat-btn @if (request()->is('admin/users*'))
-									active
-								@endif" href="##">
-									<span class="icon user-3" aria-hidden="true"></span><span>Usuários</span>
-									<span class="category__btn transparent-btn" title="Open list">
-										<span class="sr-only">Open list</span>
-										<span class="icon arrow-down" aria-hidden="true"></span>
-									</span>
-								</a>
-								<ul class="cat-sub-menu">
-									<li>
-										<a href="{{ route('users') }}">Todos</a>
-									</li>
-									<li>
-										<a href="{{ route('createuser') }}">Criar Usuário</a>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					@endcan
+                    @can('is_admin', Auth::user())
+                        <span class="system-menu__title">Sistema</span>
+                        <ul class="sidebar-body-menu">
+                            <li>
+                                <a class="show-cat-btn @if (request()->is('admin/users*')) active @endif" href="##">
+                                    <span class="icon user-3" aria-hidden="true"></span><span>Usuários</span>
+                                    <span class="category__btn transparent-btn" title="Open list">
+                                        <span class="sr-only">Open list</span>
+                                        <span class="icon arrow-down" aria-hidden="true"></span>
+                                    </span>
+                                </a>
+                                <ul class="cat-sub-menu">
+                                    <li>
+                                        <a href="{{ route('users') }}">Todos</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('createuser') }}">Criar Usuário</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <ul class="sidebar-body-menu">
+                            <li>
+                                <a class="show-cat-btn @if (request()->is('admin/regions*')) active @endif" href="##">
+                                    <span class="icon" aria-hidden="true"><i
+                                            data-feather="map-pin"></i></span><span>Regiões</span>
+                                    <span class="category__btn transparent-btn" title="Open list">
+                                        <span class="sr-only">Open list</span>
+                                        <span class="icon arrow-down" aria-hidden="true"></span>
+                                    </span>
+                                </a>
+                                <ul class="cat-sub-menu">
+                                    <li>
+                                        <a href="{{ route('users') }}">Todas</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('createuser') }}">Adicionar Região</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    @endcan
                 </div>
             </div>
             {{-- <div class="sidebar-footer">
@@ -206,8 +221,8 @@
                             </ul>
                         </div> --}}
                         <div class="nav-user-wrapper">
-                            <button href="##" class="nav-user-btn dropdown-btn" title="{{ Auth::user()->name }}"
-                                type="button">
+                            <button href="##" class="nav-user-btn dropdown-btn"
+                                title="{{ Auth::user()->name }}" type="button">
                                 <span class="sr-only">{{ Auth::user()->name }}</span>
                                 <span class="nav-user-img">
                                     <picture>

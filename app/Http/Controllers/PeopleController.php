@@ -64,9 +64,8 @@ class PeopleController extends Controller
                 flash('Pessoa adicionada com sucesso', 'success');
                 return view('admin.people.form', ['data' => $data]);
             } catch (Exception $e) {
-                $error = $e->getMessage();
                 flash('Error ao Adicionar uma nova pessoa, entre em contato com o desenvolvedor', 'error');
-                return view('admin.people.form', $error);
+                return view('admin.people.form', ['error' => $e->getMessage()]);
             }
         }
         return view('admin.home');

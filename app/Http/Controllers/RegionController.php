@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegionRequest;
 use App\Models\Region;
-use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 
 
 class RegionController extends Controller
 {
+    private $region;
+
+    public function __construct(Region $region){
+        $this->middleware('auth');
+        $this->region = $region;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +23,14 @@ class RegionController extends Controller
      */
     public function index()
     {
-        return view('admin.region.home');
+        if (Region::all()->count() > 0) {
+            $data = Region::orderBy('name')->paginate(15);
+            return view('admin.region.home', ['data' => $data]);
+        } else {
+            flash('Nenhum dado encontrado', 'warning');
+            return view('admin.region.home');
+        }
+        
     }
 
     /**
@@ -76,7 +88,13 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            $data = Region::where('id', $id)->first();
+            return view('admin.region.form', ['data' => $data]);
+        } catch (Exception $e)  {
+            flash("Não foi possível visualizar os dados de usuário, entrar em contato com o desenvolvedor...")->error();
+            return view('admin.home', ['error' => $e->getMessage()]);
+        }
     }
 
     /**
@@ -88,7 +106,19 @@ class RegionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->isMethod('PUT')) {
+            try {
+                $region = Region::where('id', $id)->first();
+                if ($region->update($request->all())) {
+                    $data = Region::where('id', $id)->first();
+                    flash("Usuário atualizado com sucesso!")->success();
+                    return view('admin.region.form', array('data' => $data));
+                }
+            } catch (Exception $e) {
+                flash("Não foi possível editar os dados da região, entrar em contato com o desenvolvedor...")->error();
+                return view('admin.home', ['error' => $e->getMessage()]);
+            }
+        }
     }
 
     /**

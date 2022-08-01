@@ -101,11 +101,10 @@ class UserController extends Controller
     {
         try {
             $data = User::where('id', $id)->first();
-            // dd($data);
             return view('admin.user.form', ['data' => $data]);
-        } catch (\Throwable $th) {
+        } catch (Exception $e) {
             flash("Não foi possível visualizar os dados de usuário, entrar em contato com o desenvolvedor...")->error();
-            return view('admin.home');
+            return view('admin.home', ['error' => $e->getMessage()]);
         }
     }
 
@@ -128,7 +127,7 @@ class UserController extends Controller
                 }
             } catch (Exception $e) {
                 flash("Não foi possível editar os dados de usuário, entrar em contato com o desenvolvedor...")->error();
-                return view('admin.home', ['error' => $e]);
+                return view('admin.home', ['error' => $e->getMessage()]);
             }
         }
     }

@@ -32,9 +32,6 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Nome</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Telefone</th>
-                                <th scope="col">CPF</th>
                                 <th scope="col">Ações</th>
                             </tr>
                         </thead>
@@ -43,14 +40,11 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $d['name'] }}</td>
-                                    <td>{{ $d['email'] }}</td>
-                                    <td>{{ $d['phone'] }}</td>
-                                    <td>{{ $d['cpf'] }}</td>
                                     <td class="d-flex justify-content-evenly">
-                                        <a href="{{ route('editpeople', ['id' => $d['id']]) }}" type="button"
+                                        <a href="{{ route('editregion', ['id' => $d['id']]) }}" type="button"
                                             class="btn btn-warning mr-1">Editar</a>
-										@can('destroy-people',Auth::user())
-											<form action="{{ route('destroypeople', ['id' => $d['id']]) }}" method="post"
+										@can('is_admin',Auth::user())
+											<form action="{{ route('destroyregion', ['id' => $d['id']]) }}" method="post"
 												class="form-delete">
 												@csrf
 												@method('DELETE')

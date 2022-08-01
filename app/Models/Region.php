@@ -29,4 +29,9 @@ class Region extends Model
         'uf',
     ];
 
+
+    public function user(){
+        return $this->hasMany(User::class);
+    }
+
 }

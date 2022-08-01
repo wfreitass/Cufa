@@ -104,6 +104,19 @@
                         </div>
                     </div>
 
+					<div class="row">
+						<div class="col">
+							<label for="region" class="form-label">Região</label>
+							<select class="form-select border-0" id="region" name="region_id" required aria-label="Default select example">
+								<option selected disabled>Escolha uma Região</option>
+								@foreach ($regions as $region)
+								<option value='{{$region['id']}}'>{{$region['name']}}</option>
+								@endforeach
+
+							</select>
+						</div>
+					</div>
+
                     <div class="mt-3 d-flex justify-content-end mb-3">
                         <button class="btn btn-primary">
                             @php

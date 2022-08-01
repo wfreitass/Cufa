@@ -11,6 +11,14 @@ class Region extends Model
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'region';
+
     /**
      * The attributes that are mass assignable.
      *

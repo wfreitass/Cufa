@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\RegionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
@@ -21,7 +22,6 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
-
 Route::controller(UserController::class)->group(function () {
     Route::get('/admin/users', 'index')->name('users')->can('is_admin', Auth::user());
     Route::get('/admin/users/createuser', 'create')->name('createuser')->can('is_admin', Auth::user());
@@ -40,6 +40,16 @@ Route::controller(PeopleController::class)->group(function () {
     Route::get('/admin/people/editpeople/{id}', 'edit')->name('editpeople');
     Route::put('/admin/people/updatepeople/{id}', 'update')->name('updatepeople');
     Route::delete('admin/people/destroypeople/{id}', 'destroy')->name('destroypeople')->can('destroy-people', Auth::user());
+});
+
+Route::controller(RegionController::class)->group(function () {
+    Route::get('/admin/region/regions', 'index')->name('regions');
+    Route::get('/admin/region/createregion', 'create')->name('createregion');
+    Route::post('/admin/region/salveregion', 'store')->name('salveregion');
+    Route::post('/admin/region/searchregion', 'search')->name('searchregion');
+    Route::get('/admin/region/editregion/{id}', 'edit')->name('editregion');
+    Route::put('/admin/region/updateregion/{id}', 'update')->name('updateregion');
+    Route::delete('admin/region/destroyregion/{id}', 'destroy')->name('destroyregion')->can('destroy-people', Auth::user());
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

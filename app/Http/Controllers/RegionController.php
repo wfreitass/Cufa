@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegionRequest;
+use App\Models\Region;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+
 
 class RegionController extends Controller
 {
@@ -13,7 +18,7 @@ class RegionController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.region.home');
     }
 
     /**
@@ -23,7 +28,7 @@ class RegionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.region.form');
     }
 
     /**
@@ -32,9 +37,24 @@ class RegionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(RegionRequest $request)
+    {  
+        if ($request->isMethod('post')) {
+            try {
+                $data = $request->all();
+                if (Region::where('name', $data['name'])->first()) {
+                    flash('Região já cadastrada na base de dados', 'warning');
+                    return view('admin.region.form');
+                }
+                $data = Region::create($data);
+                flash('Região adicionada com sucesso', 'success');
+                return view('admin.region.form', ['data' => $data]);
+            } catch (Exception $e) {
+                flash('Error ao Adicionar uma nova região, entre em contato com o desenvolvedor')->error();
+                return view('admin.region.form', ['error' => $e->getMessage()]);
+            }
+        }
+        return view('admin.home');
     }
 
     /**

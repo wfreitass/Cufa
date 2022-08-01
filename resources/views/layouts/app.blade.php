@@ -103,7 +103,7 @@
 
                         <ul class="sidebar-body-menu">
                             <li>
-                                <a class="show-cat-btn @if (request()->is('admin/regions*')) active @endif" href="##">
+                                <a class="show-cat-btn @if (request()->is('admin/region*')) active @endif" href="##">
                                     <span class="icon" aria-hidden="true"><i
                                             data-feather="map-pin"></i></span><span>Regiões</span>
                                     <span class="category__btn transparent-btn" title="Open list">
@@ -113,10 +113,10 @@
                                 </a>
                                 <ul class="cat-sub-menu">
                                     <li>
-                                        <a href="{{ route('users') }}">Todas</a>
+                                        <a href="{{ route('regions') }}">Todas</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('createuser') }}">Adicionar Região</a>
+                                        <a href="{{ route('createregion') }}">Adicionar Região</a>
                                     </li>
                                 </ul>
                             </li>

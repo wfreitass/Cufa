@@ -149,7 +149,7 @@ class UserController extends Controller
             } catch (Exception $e) {
                 $error = $e->getMessage();
                 flash('Error ao excluir dados, entre em contato com o desenvolvedor', 'error');
-                return view('admin.user.home', $error);
+                return view('admin.user.home', ['error' => $error]);
             }
         }
         return view('admin.user.home');
@@ -164,7 +164,6 @@ class UserController extends Controller
                 if ($data->count() > 0) {
                     return view('admin.user.home', ['data' => $data]);
                 }
-                
                 flash('Usuário não encontrado na base de dados')->warning();
                 return view('admin.user.home');
             } catch (Exception $e) {

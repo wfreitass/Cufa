@@ -6,7 +6,8 @@ use App\Http\Requests\RegionRequest;
 use App\Models\Region;
 use Exception;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class RegionController extends Controller
 {
@@ -129,6 +130,18 @@ class RegionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Gate::allows('is_admin', Auth::user())) {
+            try {
+                if (Region::where('id', $id)->delete()) {
+                    flash('Dados excluidos com sucesso', 'success');
+                    return redirect(route('regions'));
+                }
+            } catch (Exception $e) {
+                $error = $e->getMessage();
+                flash('Error ao excluir dados, entre em contato com o desenvolvedor', 'error');
+                return view('admin.region.home', $error);
+            }
+        }
+        return view('admin.region.home');
     }
 }

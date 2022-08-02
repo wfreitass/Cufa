@@ -44,7 +44,7 @@ class PeopleController extends Controller
      */
     public function create()
     {
-        $regions = Region::orderBy('name','asc')->get();
+        $regions = Region::orderBy('name', 'asc')->get();
         return view('admin.people.form', ['regions' => $regions]);
     }
 
@@ -56,17 +56,17 @@ class PeopleController extends Controller
      */
     public function store(PeopleRequest $request)
     {
-        // dd($request->all());
         if ($request->isMethod('post')) {
             try {
+                $regions = Region::orderBy('name', 'asc')->get();
                 $data = $request->all();
                 if (People::where('cpf', $data['cpf'])->first()) {
                     flash('CPF já cadastrado na base de dados', 'warning');
-                    return view('admin.people.form');
+                    return view('admin.people.form', ['regions' => $regions]);
                 }
                 $data = People::create($data);
                 flash('Pessoa adicionada com sucesso', 'success');
-                return view('admin.people.form', ['data' => $data]);
+                return view('admin.people.form', ['data' => $data, 'regions' => $regions]);
             } catch (Exception $e) {
                 flash('Error ao Adicionar uma nova pessoa, entre em contato com o desenvolvedor', 'error');
                 return view('admin.people.form', ['error' => $e->getMessage()]);
@@ -94,9 +94,12 @@ class PeopleController extends Controller
      */
     public function edit($id)
     {
+        
         $data = $this->people->find($id);
+        // dd($data);
+        $regions = Region::orderBy('name', 'asc')->get();
         // $data = People::where('id', $id)->get();
-        return view('admin.people.form', ['data' => $data]);
+        return view('admin.people.form', ['data' => $data, 'regions' => $regions]);
     }
 
     /**
@@ -110,10 +113,11 @@ class PeopleController extends Controller
     {
         if ($request->isMethod('put')) {
             try {
+                $regions = Region::orderBy('name', 'asc')->get();
                 $people = $this->people->find($id);
                 $people->update($request->all());
                 flash("Atualizado com sucesso", "success");
-                return view('admin.people.form', ['data' => $people]);
+                return view('admin.people.form', ['data' => $people, 'regions' => $regions]);
             } catch (Exception $e) {
                 $error = $e->getMessage();
                 flash('Error ao Autualizar dados, entre em contato com o desenvolvedor', 'error');

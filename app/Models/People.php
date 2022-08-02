@@ -23,6 +23,10 @@ class People extends Model
         'phone',
         'address',
         'complement',
+        'region_id'
     ];
 
+    public function region(){
+        return $this->hasOne(Region::class);
+    }
 }

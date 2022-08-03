@@ -34,3 +34,8 @@ mix.copyDirectory('resources/views/elegant/fonts','public/fonts')
     .js('resources/views/elegant/plugins/chart.min.js', 'public/js/layout')
     .copyDirectory('resources/views/elegant/plugins/feather.min.js', 'public/js/layout')
     .sourceMaps();
+
+//Gambira para swiper
+mix.js('node_modules/swiper/swiper-bundle.js', 'public/swiper/js')
+    .postCss('node_modules/swiper/swiper-bundle.min.css', 'public/swiper/css')
+    .sourceMaps();

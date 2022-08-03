@@ -364,6 +364,7 @@
     <!-- Custom scripts -->
     <script src="{{ asset('js/layout/script.js') }}"></script>
     {{-- <script src="js/script.js"></script> --}}
+
     @yield('script')
 
 
@@ -393,7 +394,6 @@
         // });
     </script>
 
-    <script></script>
 </body>
 
 </html>

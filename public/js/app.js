@@ -961,7 +961,7 @@ eval("\n\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ \"./node_modules/sweetalert2/dist/sweetalert2.all.js\");\n/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);\n__webpack_require__(/*! ./bootstrap */ \"./resources/js/bootstrap.js\");\n\n\nwindow.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_0___default());//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvYXBwLmpzLmpzIiwibWFwcGluZ3MiOiI7OztBQUFBQSxtQkFBTyxDQUFDLGdEQUFELENBQVA7O0FBRUE7QUFHQUUsTUFBTSxDQUFDRCxJQUFQLEdBQWNBLG9EQUFkIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vLy4vcmVzb3VyY2VzL2pzL2FwcC5qcz9jZWQ2Il0sInNvdXJjZXNDb250ZW50IjpbInJlcXVpcmUoJy4vYm9vdHN0cmFwJyk7XG5cbmltcG9ydCBTd2FsIGZyb20gJ3N3ZWV0YWxlcnQyJztcblxuXG53aW5kb3cuU3dhbCA9IFN3YWw7Il0sIm5hbWVzIjpbInJlcXVpcmUiLCJTd2FsIiwid2luZG93Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/app.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sweetalert2 */ \"./node_modules/sweetalert2/dist/sweetalert2.all.js\");\n/* harmony import */ var sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sweetalert2__WEBPACK_IMPORTED_MODULE_0__);\n__webpack_require__(/*! ./bootstrap */ \"./resources/js/bootstrap.js\");\n\n\nwindow.Swal = (sweetalert2__WEBPACK_IMPORTED_MODULE_0___default()); // import {Swiper, Navigation, Pagination} from 'swiper';\n// import 'swiper/css';\n// import 'swiper/css/navigation';\n// import 'swiper/css/pagination';\n// window.swiper = Swiper;\n// Swiper.use([Navigation, Pagination]);\n// console.log(Swiper);\n// import {Swiper, Navigation, Pagination} from 'node_modules/swiper/core/core.js';\n// import Swiper,{ Navigation, Pagination} from 'swiper';\n// window.Swiper = require('swiper/js/swiper');\n// window.Swiper = require('swiper/swiper-bundle');\n// window.Navigation = Swiper;\n// window.Pagination = Swiper;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvanMvYXBwLmpzLmpzIiwibWFwcGluZ3MiOiI7OztBQUFBQSxtQkFBTyxDQUFDLGdEQUFELENBQVA7O0FBRUE7QUFFQUUsTUFBTSxDQUFDRCxJQUFQLEdBQWNBLG9EQUFkLEVBSUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXBwLmpzP2NlZDYiXSwic291cmNlc0NvbnRlbnQiOlsicmVxdWlyZSgnLi9ib290c3RyYXAnKTtcblxuaW1wb3J0IFN3YWwgZnJvbSAnc3dlZXRhbGVydDInO1xuXG53aW5kb3cuU3dhbCA9IFN3YWw7XG5cblxuXG4vLyBpbXBvcnQge1N3aXBlciwgTmF2aWdhdGlvbiwgUGFnaW5hdGlvbn0gZnJvbSAnc3dpcGVyJztcbi8vIGltcG9ydCAnc3dpcGVyL2Nzcyc7XG4vLyBpbXBvcnQgJ3N3aXBlci9jc3MvbmF2aWdhdGlvbic7XG4vLyBpbXBvcnQgJ3N3aXBlci9jc3MvcGFnaW5hdGlvbic7XG4vLyB3aW5kb3cuc3dpcGVyID0gU3dpcGVyO1xuLy8gU3dpcGVyLnVzZShbTmF2aWdhdGlvbiwgUGFnaW5hdGlvbl0pO1xuLy8gY29uc29sZS5sb2coU3dpcGVyKTtcblxuLy8gaW1wb3J0IHtTd2lwZXIsIE5hdmlnYXRpb24sIFBhZ2luYXRpb259IGZyb20gJ25vZGVfbW9kdWxlcy9zd2lwZXIvY29yZS9jb3JlLmpzJztcbi8vIGltcG9ydCBTd2lwZXIseyBOYXZpZ2F0aW9uLCBQYWdpbmF0aW9ufSBmcm9tICdzd2lwZXInO1xuLy8gd2luZG93LlN3aXBlciA9IHJlcXVpcmUoJ3N3aXBlci9qcy9zd2lwZXInKTtcbi8vIHdpbmRvdy5Td2lwZXIgPSByZXF1aXJlKCdzd2lwZXIvc3dpcGVyLWJ1bmRsZScpO1xuLy8gd2luZG93Lk5hdmlnYXRpb24gPSBTd2lwZXI7XG4vLyB3aW5kb3cuUGFnaW5hdGlvbiA9IFN3aXBlcjtcblxuIl0sIm5hbWVzIjpbInJlcXVpcmUiLCJTd2FsIiwid2luZG93Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/app.js\n");
 
 /***/ }),
 
@@ -1037,6 +1037,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9yZXNvdXJjZXMvY3NzL2N1ZmEuY3NzLmpzIiwibWFwcGluZ3MiOiI7QUFBQSIsInNvdXJjZXMiOlsid2VicGFjazovLy8uL3Jlc291cmNlcy9jc3MvY3VmYS5jc3M/NDY3OCJdLCJzb3VyY2VzQ29udGVudCI6WyIvLyBleHRyYWN0ZWQgYnkgbWluaS1jc3MtZXh0cmFjdC1wbHVnaW5cbmV4cG9ydCB7fTsiXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///./resources/css/cufa.css\n");
+
+/***/ }),
+
+/***/ "./node_modules/swiper/swiper-bundle.min.css":
+/*!***************************************************!*\
+  !*** ./node_modules/swiper/swiper-bundle.min.css ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiLi9ub2RlX21vZHVsZXMvc3dpcGVyL3N3aXBlci1idW5kbGUubWluLmNzcy5qcyIsIm1hcHBpbmdzIjoiO0FBQUEiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9ub2RlX21vZHVsZXMvc3dpcGVyL3N3aXBlci1idW5kbGUubWluLmNzcz9lZDUwIl0sInNvdXJjZXNDb250ZW50IjpbIi8vIGV4dHJhY3RlZCBieSBtaW5pLWNzcy1leHRyYWN0LXBsdWdpblxuZXhwb3J0IHt9OyJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./node_modules/swiper/swiper-bundle.min.css\n");
 
 /***/ }),
 
@@ -1207,6 +1218,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
 /******/ 			"css/app": 0,
+/******/ 			"swiper/css/swiper-bundle.min": 0,
 /******/ 			"css/layout/cufa": 0,
 /******/ 			"css/layout/style": 0,
 /******/ 			"css/login/style": 0
@@ -1259,11 +1271,12 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/sass/app.scss")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/views/login/css/style.css")))
-/******/ 	__webpack_require__.O(undefined, ["css/app","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/views/elegant/css/style.css")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/css/cufa.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","swiper/css/swiper-bundle.min","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","swiper/css/swiper-bundle.min","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","swiper/css/swiper-bundle.min","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/views/login/css/style.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","swiper/css/swiper-bundle.min","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/views/elegant/css/style.css")))
+/******/ 	__webpack_require__.O(undefined, ["css/app","swiper/css/swiper-bundle.min","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./resources/css/cufa.css")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app","swiper/css/swiper-bundle.min","css/layout/cufa","css/layout/style","css/login/style"], () => (__webpack_require__("./node_modules/swiper/swiper-bundle.min.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
